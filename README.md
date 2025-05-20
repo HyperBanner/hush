@@ -20,5 +20,6 @@ Support-wise, I'm pretty sure this only works on Linux operating systems. Going 
 Has the absolute basics baked in, like "cd", "pwd", "echo", etc.
 Supports running PATH executables.
 Both absolute and relative paths are supported, as well as the "~" alias for /home/USERNAME/. (the current directory alias needs to be explicitly written out!)
+cd also supports the "-" alias, which just switches to the previous directory.
 
 ... thats about it.
