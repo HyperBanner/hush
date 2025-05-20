@@ -17,6 +17,11 @@ int num_builtins = sizeof(builtins) / sizeof(builtins[0]);
 int exit_command(int argc, char **argv) { return -1; }
 
 int echo_command(int argc, char **argv) {
+  if (argc == 1) {
+    printf("Usage: echo token1 token2 ...");
+    return 0;
+  }
+
   for (int i = 1; i < argc; ++i)
     printf("%s ", argv[i]);
   printf("\n");
@@ -73,7 +78,7 @@ int type_command(int argc, char **argv) {
 
 int pwd_command(int argc, char **argv) {
   if (argc > 1) {
-    printf("pwd: too many arguments");
+    fprintf(stderr, "pwd: too many arguments");
     return 1;
   }
 

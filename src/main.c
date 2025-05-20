@@ -65,16 +65,21 @@ int run_command(int argc, char **argv) {
 
 // Main loop
 int main() {
-  // declare some vars used in the loop
+  // define some vars used in the loop
   char input[256];
   char *argv[16];
   int argc;
   int exit_shell = 0;
+  char hostname[256];
+  gethostname(hostname, sizeof(hostname));
+  char *username = getlogin();
+  if (!username)
+    username = "unknown";
 
   while (!exit_shell) {
     // Flush after every printf
     setbuf(stdout, NULL);
-    printf("$ ");
+    printf("%s@%s $ ", username, hostname);
 
     // Wait for user input and dont't go further until assigned
     if (!fgets(input, sizeof(input), stdin))
